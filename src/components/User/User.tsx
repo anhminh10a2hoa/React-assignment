@@ -19,7 +19,7 @@ const User = () => {
     <React.Fragment>
     {loading ? (<p>It's loading...</p>) : (
       <div >
-        {user.split(',').join('{').split('{').join('}').split('}').map((str: string, i: number) => <p key={i}>{str.replace('"', '').replace('"', '').replace('"', '').replace('"', '').replace(':', ' : ')}</p>)}
+        {user.split(',').join('{').split('{').join('}').split('}').map((str: string, i: number) => <p key={i}>{str.split('"').join("")}</p>)}
         <a style={{paddingBottom: '50px'}} href="/">Return</a>
     </div>
     )}
