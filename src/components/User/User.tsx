@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const User = () => {
   let {id}: any = useParams();
+  let a: string = "";
   const [user, setUser] = useState({} as any);
   const [loading, setLoading] = useState(true);
   
@@ -14,22 +15,31 @@ const User = () => {
       .then(() => setLoading(false))
     }, [setUser]
   );
- 
+
+  for(let info in user){
+    if(info == 'address'){
+      for(let adr in user.address){
+        if(adr !== 'geo'){
+          a += `${adr}: ${user.address[adr]} \n`;
+        }
+      }
+    }
+    else if(info == 'company'){
+      for(let cpn in user.company){
+        if(cpn == 'name'){
+          a += `Company name: ${user.company[cpn]} \n`;
+        }
+      }
+    }
+    else {
+      a += `${info}: ${user[info]} \n`;
+    }
+  }
   return(
     <React.Fragment>
     {loading ? (<p>It's loading...</p>) : (
       <div >
-        <p>Name: {user.name}</p>
-        <p>Username: {user.username}</p>
-        <p>Email: {user.email}</p>
-        <p>Phone: {user.phone}</p>
-        <p>Company: {user.company.name}</p>
-        <p>Website: {user.website}</p>
-        <p>Address:</p>
-          <p>+ street: {user.address.street}</p>
-          <p>+ suite: {user.address.suite}</p>
-          <p>+ city: {user.address.city}</p>
-          <p>+ zipcode: {user.address.zipcode}</p>
+        {a.split('\n').map((str, i) => <p key={i}>{str}</p>)}
         <a href="/">Return</a>
     </div>
     )}

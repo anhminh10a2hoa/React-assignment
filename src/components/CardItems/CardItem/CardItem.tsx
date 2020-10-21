@@ -6,24 +6,25 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Button from '../../Button/Button';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    minWidth: 200,
+    minWidth: 250,
     textAlign: "center",
-    alignItems:"center",
-    justifyContent:"center"
+    border: "0.5px solid #cbcdd1",
+    margin: '0 10px 40px 40px'
   },
   avatar: {
-    backgroundColor: 'gray',
-    margin: 'auto',
+    backgroundColor: '#bbc0c7',
     fontSize: '50px',
     color: 'black',
     height: 150,
     width: 150,
+    marginLeft: '16px'
   },
   userName: {
-    color: 'gray',
+    color: '#bbc0c7',
     fontStyle: "oblique",
     paddingBottom: '20px',
   },
@@ -47,6 +48,13 @@ const CardItem: React.FC<CardItemProps> = ({name, username, website, id}) => {
 
   return (
     <Card className={classes.root}>
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -54,6 +62,7 @@ const CardItem: React.FC<CardItemProps> = ({name, username, website, id}) => {
           </Avatar>
         }
       />
+      </Grid>
       <CardContent>
         <Typography variant="h6" className={classes.name}>
           {name}

@@ -10,10 +10,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <h2>USER LIST</h2>
+            <h2>HOME PAGE</h2>
             <CardItems />
           </Route>
           <Route exact path="/users/:id">
+            <h2>USER INFORMATION</h2>
             <User />
           </Route>
         </Switch>

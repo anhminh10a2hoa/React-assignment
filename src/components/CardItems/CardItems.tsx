@@ -27,7 +27,7 @@ const CardItems: React.FC = () => {
   return (
     <React.Fragment>
     {loading ? (<p>It's loading...</p>) : (
-      <Grid container spacing={8} className={classes.gridContainer}>
+      <Grid container className={classes.gridContainer}>
         {
           users.map((user) => (
             <Grid item xs={12} sm={6} md={4} key={user.id}>
